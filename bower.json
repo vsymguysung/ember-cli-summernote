@@ -15,6 +15,6 @@
     "qunit": "~1.15.0"
   },
   "devDependencies": {
-    "summernote": "~0.6.0"
+    "summernote": "~0.5.10"
   }
 }
