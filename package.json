@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-summernote",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,11 +10,11 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/vsymguysung/ember-cli-summernote",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Guysung Kim",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^1.0.0",
@@ -31,7 +31,7 @@
     "express": "^4.8.5",
     "glob": "^4.0.5"
   },
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "ember-cli addon for summernote wysiwyg editor",
   "keywords": [
     "ember-addon"
   ],

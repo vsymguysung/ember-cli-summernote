@@ -2,6 +2,8 @@
 
 This README outlines the details of collaborating on this Ember addon.
 
+
+
 ## Installation
 
 * `git clone` this repository
@@ -23,3 +25,12 @@ This README outlines the details of collaborating on this Ember addon.
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+
+#### Inspired by
+* Summernote(Super simple WYSIWYG Editor) (https://github.com/summernote/summernote) 
+* Heather Brysiewicz's blog post (http://hbrysiewicz.github.io/2014-04-18-summernote-ember-wysiwyg.html)
+
+
+#### License
+MIT license.
