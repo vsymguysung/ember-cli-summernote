@@ -4,6 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'dummy',
     environment: environment,
+    contentSecurityPolicyHeader: 'Disabled-Content-Security-Policy',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -12,6 +13,7 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+    version: require('../../../package').version,
 
     APP: {
       // Here you can pass flags/options to your application instance
@@ -41,6 +43,11 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
 
+  }
+
+  if (environment === 'github') {
+    ENV.baseURL = '/ember-cli-summernote/';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
