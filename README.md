@@ -19,13 +19,12 @@ $ ember g ember-cli-summernote
 ```
 
 ## Demo
-Check out the demo on [github pages](http://gevious.github.io/ember-datepicker/ "Ember-datepicker Demo").
-Alternatively you can clone this repo and run the app
+You can clone this repo and run the app 
 
 ```
 $ sudo npm install -g ember-cli
-$ git clone git@github.com:gevious/ember-datepicker
-$ cd ember-datepicker
+$ git clone http://github.com/vsymguysung/ember-cli-summernote.git
+$ cd ember-cli-summernote
 # install dependencies
 $ npm install; bower install
 # fire up local server
