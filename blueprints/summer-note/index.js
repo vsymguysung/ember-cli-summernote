@@ -5,7 +5,7 @@ module.exports = {
     var that = this;
 
 
-    return that.addBowerPackageToProject('summernote');
+    return that.addBowerPackageToProject('summernote', "~0.5.10");
     //
     // return this.addBowerPackageToProject('rangy-1.3').then(function() {
     //   return this.addBowerPackageToProject('wysihtml5x').then(function() {
