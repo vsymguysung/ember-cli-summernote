@@ -23,18 +23,27 @@ You can clone this repo and run the app
 
 ```
 $ sudo npm install -g ember-cli
+
+# clone the codebase
 $ git clone http://github.com/vsymguysung/ember-cli-summernote.git
 $ cd ember-cli-summernote
+
 # install dependencies
 $ npm install; bower install
+
 # fire up local server
 $ ember serve
+
+# visit the page with the following url.
+http://localhost:4200
 ```
 
 
 #### Inspired by
-* Summernote(Super simple WYSIWYG Editor) (https://github.com/summernote/summernote) 
-* Heather Brysiewicz's blog post (http://hbrysiewicz.github.io/2014-04-18-summernote-ember-wysiwyg.html)
+
+Summernote(Super simple WYSIWYG Editor) (https://github.com/summernote/summernote) 
+
+Heather Brysiewicz's blog post (http://hbrysiewicz.github.io/2014-04-18-summernote-ember-wysiwyg.html)
 
 
 #### License
