@@ -10,7 +10,7 @@ module.exports = {
     this._super.included(app);
 
     // <!-- include libraries(jQuery, bootstrap, fontawesome) -->
-    app.import(app.bowerDirectory + '/jquery/dis/jquery.min.js');
+    app.import(app.bowerDirectory + '/jquery/dist/jquery.min.js');
     app.import(app.bowerDirectory + '/bootstrap/dist/css/bootstrap.min.css');
     app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.min.js');
     app.import(app.bowerDirectory + '/fontawesome/css/font-awesome.min.js');
