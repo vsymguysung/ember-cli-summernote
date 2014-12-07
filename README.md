@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/vsymguysung/ember-cli-summernote.svg)](http://travis-ci.org/vsymguysung/ember-cli-summernote)
 
 ## Description
-This component is an Ember CLI add-on and enhance summernote.js 
-to create an extensible ember component. This is still a work in progress. Pull requests are welcome.
+Ember-cli-summernote is an Ember CLI add-on. This addon actually converts summernote to an Ember component which is
+re-usable unit. This is still a work in progress. Pull requests are welcome.
 
 ## Installation
 ```
@@ -16,7 +16,7 @@ $ ember g ember-cli-summernote
 
 ## Basic Usage
 ```handlebars
-{{summer-note content=postContent header="Example"}}
+{{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example"}}
 ```
 
 ## Demo
