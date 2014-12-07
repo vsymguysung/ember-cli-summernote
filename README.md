@@ -1,6 +1,6 @@
 # Ember-cli-summernote
 
-[![Build Status](https://travis-ci.org/vsymguysung/ember-cli-summernote.svg)](http://travis-ci.org/summernote/summernote)
+[![Build Status](https://travis-ci.org/vsymguysung/ember-cli-summernote.svg)](http://travis-ci.org/vsymguysung/ember-cli-summernote)
 
 ## Description
 This component is an Ember CLI add-on and enhance summernote.js 
