@@ -1,5 +1,6 @@
 # Ember-cli-summernote
 
+[![Build Status](https://travis-ci.org/vsymguysung/ember-cli-summernote.svg)](http://travis-ci.org/summernote/summernote)
 
 ## Description
 This component is an Ember CLI add-on and enhance summernote.js 
@@ -37,13 +38,27 @@ $ ember serve
 # visit the page with the following url.
 http://localhost:4200
 ```
+## ToDOs / Known Issues
+* Find the reason that summernote version 0.6.0 is not working as ember-cli addon.
+  
+  [Uncaught TypeError: Cannot read property 'kbd' of undefined](https://github.com/summernote/summernote/issues/779)
+  
+* Known issue: airMode is not working somehow.
+
+* Need to implement toolbar buttons customizing feature in the component. 
+
+
+
+### Contact Info
+guysung.kim@gmail.com
+
 
 
 #### Inspired by
 
-Summernote(Super simple WYSIWYG Editor) (https://github.com/summernote/summernote) 
+* Summernote(Super simple WYSIWYG Editor) (https://github.com/summernote/summernote) 
 
-Heather Brysiewicz's blog post (http://hbrysiewicz.github.io/2014-04-18-summernote-ember-wysiwyg.html)
+* Heather Brysiewicz's blog post (http://hbrysiewicz.github.io/2014-04-18-summernote-ember-wysiwyg.html)
 
 
 #### License
