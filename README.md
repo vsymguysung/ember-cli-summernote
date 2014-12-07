@@ -4,7 +4,7 @@
 
 ## Description
 Ember-cli-summernote is an Ember CLI add-on. This addon actually converts summernote to an Ember component which is
-re-usable unit. This is still a work in progress. Pull requests are welcome.
+a re-usable unit. This is still a work in progress. Pull requests are welcome.
 
 ## Installation
 ```
@@ -15,8 +15,26 @@ $ ember g ember-cli-summernote
 ```
 
 ## Basic Usage
-```handlebars
+
+### Handlebar Template
+```
 {{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example"}}
+```
+
+### Brocfile.js ###
+The bootstrap and fontAwesome resources will not be imported to your resources by default. 
+
+If you want the add-on to add it selectively you have to specify it in the `Brocfile.js`
+(No option means false by default)
+
+```
+var app = new EmberAddon({
+  'ember-cli-summernote': {
+    "importBootstrapCSS": true,
+    "importBootstrapJS": true,
+    "importFontawesomeCSS": true
+  }
+});
 ```
 
 ## Demo
