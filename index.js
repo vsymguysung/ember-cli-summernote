@@ -12,9 +12,9 @@ module.exports = {
     this._super.included(app);
 
     var summernotePath   = path.join(app.bowerDirectory,'/summernote/dist/');
-    var bootstrapPath   = path.join(app.bowerDirectory,'/summernote/dist/');
+    var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
     var fontawesomePath   = path.join(app.bowerDirectory,'/fontawesome/');
-    var options         = app.options['ember-bootstrap-datetimepicker'] || {};
+    var options         = app.options['ember-cli-summernote'] || {};
 
 
     // Import Bootstrap
@@ -28,12 +28,12 @@ module.exports = {
 
     // Import css and glyphicons from FontAwesome
     if (options.importFontawesomeCSS) {
-      app.import(fontawesomePath, '/css/font-awesome.min.css');
-      app.import(fontawesomePath, '/fonts/fontawesome-webfont.eot', { destDir: 'fonts' });
-      app.import(fontawesomePath, '/fonts/fontawesome-webfont.svg', { destDir: 'fonts' });
-      app.import(fontawesomePath, '/fonts/fontawesome-webfont.ttf', { destDir: 'fonts' });
-      app.import(fontawesomePath, '/fonts/fontawesome-webfont.woff', { destDir: 'fonts' });
-      app.import(fontawesomePath, '/fonts/FontAwesome.otf', { destDir: 'fonts' });
+      app.import(path.join(fontawesomePath, '/css/font-awesome.min.css'));
+      app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.eot'), { destDir: 'fonts' });
+      app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.svg'), { destDir: 'fonts' });
+      app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.ttf'), { destDir: 'fonts' });
+      app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.woff'), { destDir: 'fonts' });
+      app.import(path.join(fontawesomePath, '/fonts/FontAwesome.otf'), { destDir: 'fonts' });
     }
 
     // Include Summernote.
