@@ -58,10 +58,6 @@ $ ember serve
 http://localhost:4200
 ```
 ## ToDOs / Known Issues
-* Find the reason that summernote version 0.6.0 is not working as ember-cli addon.
-  
-  [Uncaught TypeError: Cannot read property 'kbd' of undefined](https://github.com/summernote/summernote/issues/779)
-  
 * Known issue: airMode is not working somehow.
 
 * Need to implement toolbar buttons customizing feature in the component. 
