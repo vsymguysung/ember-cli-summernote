@@ -1,6 +1,5 @@
 import Ember from "ember";
 
-var get = Ember.get;
 
 
 var SummerNoteComponent = Ember.Component.extend({
@@ -16,7 +15,6 @@ var SummerNoteComponent = Ember.Component.extend({
   },
 
   didInsertElement: function() {
-    var _this = this;
     var _btnSize = this.get('btnSize');
     var _height = this.get('height');
     var _focus = this.get('focus');
