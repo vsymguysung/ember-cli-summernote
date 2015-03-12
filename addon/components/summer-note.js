@@ -25,8 +25,9 @@ var SummerNoteComponent = Ember.Component.extend({
     // ensure summernote is loaded
     // summernote 0.6.0 is not working as of this code written.
     // 0.5.10 is working version.
-    Ember.assert("summernote has to exist on Ember.$.fn.summernote", Ember.$.fn.summernote);
-    Ember.assert("tooltip has to exist on Ember.$.fn.tooltip", Ember.$.fn.tooltip);
+
+    Ember.assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
+    Ember.assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
 
     this.$('textarea').summernote({
       height: _height,
