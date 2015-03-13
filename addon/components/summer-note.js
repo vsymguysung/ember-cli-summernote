@@ -69,8 +69,11 @@ var SummerNoteComponent = Ember.Component.extend({
   doUpdate: function() {
     var content = this.$('.note-editable').html();
     this.set('content', content);
-  }
-
+  },
+  
+  setHeight: function() {
+    this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
+  }.observes('height')
 });
 
 export default SummerNoteComponent;
