@@ -19,7 +19,22 @@ $ ember g ember-cli-summernote
 
 ### Handlebar Template
 ```
-{{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example"}}
+import Ember from 'ember';
+
+export default Ember.ObjectController.extend({
+  contentHeight: 200,
+  postContent: "Some intial contents go here. Lorem Ipsum is simply dummy text of the printing.",
+  
+  actions: {
+    changeHeight(someObject) {
+      var height = someObject.doSomeCalculationToGetHeight();
+       this.set('contentHeight', heigth)
+    }
+  }
+});
+
+{{summer-note height=contentHeight btnSize=bs-sm content=postContent focus=false header="Example"}}
+
 ```
 
 ### Brocfile.js ###
