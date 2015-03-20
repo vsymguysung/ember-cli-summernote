@@ -79,11 +79,6 @@ http://localhost:4200
 
 
 
-### Contact Info
-guysung.kim@gmail.com
-
-
-
 #### Inspired by
 
 * Summernote(Super simple WYSIWYG Editor) (https://github.com/summernote/summernote) 
