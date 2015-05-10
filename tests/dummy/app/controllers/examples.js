@@ -4,6 +4,8 @@ var ExamplesController = Ember.Controller.extend({
 
   postContent: 'Hello, world!',
 
+  editingDisabled: false,
+
   actions: {
     
   }
