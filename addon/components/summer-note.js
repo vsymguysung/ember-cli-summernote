@@ -9,6 +9,7 @@ var SummerNoteComponent = Ember.Component.extend({
   height: 120,
   focus: false,
   airMode: false,
+  disabled: false,
 
   willDestroyElement: function() {
     this.$('textarea').destroy();
@@ -53,6 +54,8 @@ var SummerNoteComponent = Ember.Component.extend({
       // ]
     });
 
+    this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
+
     var _content = this.get('content');
     this.$('textarea').code(_content);
     this.$('.btn').addClass(_btnSize);
@@ -73,7 +76,11 @@ var SummerNoteComponent = Ember.Component.extend({
   
   setHeight: function() {
     this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
-  }.observes('height')
+  }.observes('height'),
+
+  setContentEditable: function() {
+    this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
+  }.observes('disabled')
 });
 
 export default SummerNoteComponent;

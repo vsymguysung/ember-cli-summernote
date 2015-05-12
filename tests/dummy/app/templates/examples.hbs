@@ -2,11 +2,13 @@
     <pre>
 
      Use the following code to put a wysiwyg editor.
-    &#123;&#123;summer-note content=postContent header="Example"&#125;&#125;
+    &#123;&#123;summer-note content=postContent header="Example" disabled=myControlVariable&#125;&#125;
     </pre>
     <div class='container'>
       <h3>Example </h3>
-      {{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example"}}
+      {{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example" disabled=editingDisabled}}
+
+      <p>Disable editing {{input type="checkbox" checked=editingDisabled}}</p>
     </div>
     <div class="container"> 
       <div class='wysiwyg-preview'>
