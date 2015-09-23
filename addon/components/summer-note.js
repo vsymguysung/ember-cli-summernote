@@ -70,7 +70,7 @@ var SummerNoteComponent = Ember.Component.extend({
   },
 
   doUpdate: function() {
-    var content = this.$('.note-editable').html();
+    var content = this.$('textarea').code();
     this.set('content', content);
   },
   
