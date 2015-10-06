@@ -10,6 +10,7 @@ var SummerNoteComponent = Ember.Component.extend({
   focus: false,
   airMode: false,
   disabled: false,
+  dialogsInBody: false,
 
   willDestroyElement: function() {
     this.$('textarea').destroy();
@@ -20,6 +21,7 @@ var SummerNoteComponent = Ember.Component.extend({
     var _height = this.get('height');
     var _focus = this.get('focus');
     var _airMode = this.get('airMode');
+    var _dialogsInBody = this.get('dialogsInBody');
 
     // ensure summernote is loaded
     // summernote 0.6.0 is not working as of this code written.
@@ -45,6 +47,7 @@ var SummerNoteComponent = Ember.Component.extend({
         ['help', ['help']]
       ],
       airMode: _airMode,
+      dialogsInBody: _dialogsInBody,
       // airPopover: [
       //   ['color', ['color']],
       //   ['font', ['bold', 'underline', 'clear']],
