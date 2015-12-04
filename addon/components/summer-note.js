@@ -53,7 +53,7 @@ var SummerNoteComponent = Ember.Component.extend({
     this.$('textarea').code(_content);
     this.$('.btn').addClass(_btnSize);
   },
-  
+
   keyUp: function() {
     this.doUpdate();
   },
