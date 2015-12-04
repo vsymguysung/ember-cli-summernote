@@ -11,6 +11,7 @@ var SummerNoteComponent = Ember.Component.extend({
   airMode: false,
   disabled: false,
   dialogsInBody: false,
+  disabledOptions: {},
 
   willDestroyElement: function() {
     this.$('textarea').destroy();
@@ -22,6 +23,7 @@ var SummerNoteComponent = Ember.Component.extend({
     var _focus = this.get('focus');
     var _airMode = this.get('airMode');
     var _dialogsInBody = this.get('dialogsInBody');
+    var _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
 
     // ensure summernote is loaded
     // summernote 0.6.0 is not working as of this code written.
@@ -33,19 +35,7 @@ var SummerNoteComponent = Ember.Component.extend({
     this.$('textarea').summernote({
       height: _height,
       focus: _focus,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
-        ['fontname', ['fontname']],
-        ['fontsize', ['fontsize']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video', 'hr']],
-        ['view', ['fullscreen', 'codeview']],
-        ['help', ['help']]
-      ],
+      toolbar: _toolbar,
       airMode: _airMode,
       dialogsInBody: _dialogsInBody,
       // airPopover: [
@@ -76,14 +66,85 @@ var SummerNoteComponent = Ember.Component.extend({
     var content = this.$('textarea').code();
     this.set('content', content);
   },
-  
+
   setHeight: function() {
     this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
   }.observes('height'),
 
   setContentEditable: function() {
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
-  }.observes('disabled')
+  }.observes('disabled'),
+
+  getToolbarOptions: function(disabledOptions) {
+    var availableOptions = {
+      style: {
+        style: true
+      },
+      font: {
+        bold: true,
+        italic: true,
+        underline: true,
+        superscript: true,
+        subscript: true,
+        strikethrough: true,
+        clear: true
+      },
+      fontname: {
+        fontname: true
+      },
+      fontsize: {
+        fontsize: true
+      },
+      color: {
+        color: true
+      },
+      para:  {
+        ul: true,
+        ol: true,
+        paragraph: true
+      },
+      height: {
+        height: true
+      },
+      table: {
+        table: true
+      },
+      insert: {
+        link: true,
+        picture: true,
+        video: true,
+        hr: true
+      },
+      view: {
+        fullscreen: true,
+        codeview: true
+      },
+      help: {
+        help: true
+      }
+    };
+    var _toolbar = [];
+
+    //disable Options
+    for (var key in availableOptions) {
+      var arr = [];
+      if(disabledOptions === undefined || disabledOptions === null ||disabledOptions[key] !== false) {
+        arr.push(key);
+        var arr2 = [];
+        for (var subKey in availableOptions[key]) {
+          if(disabledOptions === undefined || disabledOptions === null || disabledOptions[key] === undefined || disabledOptions[key] === null || disabledOptions[key][subKey] !== false) {
+            arr2.push(subKey);
+          }
+        }
+        arr.push(arr2);
+      }
+      if(arr.length > 0) {
+        _toolbar.push(arr);
+      }
+    }
+
+    return _toolbar;
+  }
 });
 
 export default SummerNoteComponent;
