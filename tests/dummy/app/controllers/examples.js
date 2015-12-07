@@ -6,8 +6,16 @@ var ExamplesController = Ember.Controller.extend({
 
   editingDisabled: false,
 
+  disabledOptions: {
+    style: false,
+    insert: {
+      picture: false
+    },
+    help: false
+  },
+
   actions: {
-    
+
   }
 
 });
