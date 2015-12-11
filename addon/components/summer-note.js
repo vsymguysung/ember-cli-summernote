@@ -14,7 +14,8 @@ var SummerNoteComponent = Ember.Component.extend({
   disabledOptions: {},
 
   willDestroyElement: function() {
-    this.$('textarea').destroy();
+    this.$('#summernote').summernote('destroy');
+    console.log('summernote("destroy")');
   },
 
   didInsertElement: function() {
@@ -32,7 +33,7 @@ var SummerNoteComponent = Ember.Component.extend({
     Ember.assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
     Ember.assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
 
-    this.$('textarea').summernote({
+    this.$('#summernote').summernote({
       height: _height,
       focus: _focus,
       toolbar: _toolbar,
@@ -48,10 +49,10 @@ var SummerNoteComponent = Ember.Component.extend({
     });
 
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
+    this.$('.btn').addClass(_btnSize);
 
     var _content = this.get('content');
-    this.$('textarea').code(_content);
-    this.$('.btn').addClass(_btnSize);
+    this.$('#summernote').summernote('code', _content);
   },
 
   keyUp: function() {
@@ -63,16 +64,17 @@ var SummerNoteComponent = Ember.Component.extend({
   },
 
   doUpdate: function() {
-    var content = this.$('textarea').code();
+    var content = this.$('#summernote').summernote('code');
+    console.log('content' + JSON.stringify(content));
     this.set('content', content);
   },
 
   setHeight: Ember.observer('height', function(/*sender, key, value, rev*/) {
-    Ember.$.find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
+    this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
   }),
 
   setContentEditable: Ember.observer('disabled', function(/*sender, key, value, rev*/) {
-    Ember.$.find('.note-editable').attr('contenteditable', !this.get('disabled'));
+    this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
   }),
 
   getToolbarOptions: function(disabledOptions) {

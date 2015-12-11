@@ -36,8 +36,7 @@ export default Ember.ObjectController.extend({
 ```
 
 ```handlebars
-{{summer-note height=contentHeight btnSize=bs-sm content=postContent focus=false header="Example" disabled=editingDisabled}}
-```
+{{summer-note height=contentHeight btnSize=bs-sm content=postContent airMode=false focus=false header="Example" disabled=editingDisabled disabledOptions=disabledOptions}}```
 
 ### Brocfile.js ###
 The bootstrap and fontAwesome resources will not be imported to your resources by default. 
@@ -75,9 +74,7 @@ $ ember serve
 http://localhost:4200
 ```
 ## ToDOs / Known Issues
-* Known issue: airMode is not working somehow.
-
-* Need to implement toolbar buttons customizing feature in the component. 
+* Need to implement airPopover customizing feature in the component. 
 
 
 

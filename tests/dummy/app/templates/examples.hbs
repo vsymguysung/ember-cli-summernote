@@ -1,8 +1,14 @@
   <div class="container">
     <pre>
-
-     Use the following code to put a wysiwyg editor.
-    &#123;&#123;summer-note content=postContent header="Example" disabled=myControlVariable disabledOptions=disabledOptions&#125;&#125;
+    Use the following code to put a wysiwyg editor.
+    &#123;&#123;summer-note height=contentHeight 
+                  btnSize=bs-sm 
+                  airMode=false 
+                  content=postContent 
+                  focus=false 
+                  header="Example" 
+                  disabled=myControlVariable 
+                  disabledOptions=disabledOptions&#125;&#125;
 
     disabledOptions: {
       style: false,
@@ -12,9 +18,10 @@
       help: false
     }
     </pre>
+
     <div class='container'>
       <h3>Example </h3>
-      {{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example" disabled=editingDisabled disabledOptions=disabledOptions}}
+      {{summer-note height=contentHeight btnSize=bs-sm content=postContent airMode=false focus=false header="Example" disabled=editingDisabled disabledOptions=disabledOptions}}
 
       <p>Disable editing {{input type="checkbox" checked=editingDisabled}}</p>
     </div>
