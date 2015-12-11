@@ -67,13 +67,13 @@ var SummerNoteComponent = Ember.Component.extend({
     this.set('content', content);
   },
 
-  setHeight: function() {
-    this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
-  }.observes('height'),
+  setHeight: Ember.observer('height', function(/*sender, key, value, rev*/) {
+    Ember.$.find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
+  }),
 
-  setContentEditable: function() {
-    this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
-  }.observes('disabled'),
+  setContentEditable: Ember.observer('disabled', function(/*sender, key, value, rev*/) {
+    Ember.$.find('.note-editable').attr('contenteditable', !this.get('disabled'));
+  }),
 
   getToolbarOptions: function(disabledOptions) {
     var availableOptions = {
