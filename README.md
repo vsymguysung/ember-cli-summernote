@@ -36,9 +36,10 @@ export default Ember.ObjectController.extend({
 ```
 
 ```handlebars
-{{summer-note height=contentHeight btnSize=bs-sm content=postContent airMode=false focus=false header="Example" disabled=editingDisabled disabledOptions=disabledOptions}}```
+{{summer-note height=contentHeight btnSize=bs-sm content=postContent airMode=false focus=false header="Example" disabled=editingDisabled disabledOptions=disabledOptions}}
+```
 
-### Brocfile.js ###
+### ember-cli-build.js ###
 The bootstrap and fontAwesome resources will not be imported to your resources by default. 
 
 If you want the add-on to add it selectively you have to specify it in the `Brocfile.js`
