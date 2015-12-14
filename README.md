@@ -3,6 +3,12 @@
 [![Build Status](https://travis-ci.org/vsymguysung/ember-cli-summernote.svg)](http://travis-ci.org/vsymguysung/ember-cli-summernote)
 [![NPM Downlaads](https://img.shields.io/npm/dm/ember-cli-summernote.svg)](https://www.npmjs.org/package/ember-cli-summernote)
 [![npm version](https://badge.fury.io/js/ember-cli-summernote.svg)](http://badge.fury.io/js/ember-cli-summernote)
+
+[![Ember Observer Score](http://emberobserver.com/badges/ember-cli-summernote.svg)](http://emberobserver.com/addons/ember-cli-summernote)
+[![Code Climate](https://codeclimate.com/github/ming-codes/ember-cli-summernote/badges/gpa.svg)](https://codeclimate.com/github/ming-codes/ember-cli-summernote)
+[![Dependency Status](https://david-dm.org/ming-codes/ember-cli-summernote.svg)](https://david-dm.org/ming-codes/ember-cli-summernote)
+[![devDependency Status](https://david-dm.org/ming-codes/ember-cli-summernote/dev-status.svg)](https://david-dm.org/ming-codes/ember-cli-summernote#info=devDependencies)
+
 ## Description
 Ember-cli-summernote is an Ember CLI add-on. This addon actually converts summernote to an Ember component which is
 a re-usable unit. This is still a work in progress. Pull requests are welcome.
