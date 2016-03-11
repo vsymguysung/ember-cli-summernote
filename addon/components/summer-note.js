@@ -65,7 +65,6 @@ var SummerNoteComponent = Ember.Component.extend({
 
   doUpdate: function() {
     var content = this.$('#summernote').summernote('code');
-    console.log('content' + JSON.stringify(content));
     this.set('content', content);
   },
 
