@@ -33,6 +33,7 @@ module.exports = {
       app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.svg'), { destDir: 'fonts' });
       app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.ttf'), { destDir: 'fonts' });
       app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.woff'), { destDir: 'fonts' });
+      app.import(path.join(fontawesomePath, '/fonts/fontawesome-webfont.woff2'), { destDir: 'fonts' });
       app.import(path.join(fontawesomePath, '/fonts/FontAwesome.otf'), { destDir: 'fonts' });
     }
 
