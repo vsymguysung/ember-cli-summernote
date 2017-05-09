@@ -12,7 +12,7 @@ var SummerNoteComponent = Ember.Component.extend({
   disabled: false,
   dialogsInBody: false,
   disabledOptions: {},
-
+  callbacks:{},
   willDestroyElement: function() {
     this.$('#summernote').summernote('destroy');
     console.log('summernote("destroy")');
@@ -25,7 +25,7 @@ var SummerNoteComponent = Ember.Component.extend({
     var _airMode = this.get('airMode');
     var _dialogsInBody = this.get('dialogsInBody');
     var _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
-
+	var _callbacks = this.get('callbacks');
     // ensure summernote is loaded
     // summernote 0.6.0 is not working as of this code written.
     // 0.5.10 is working version.
@@ -39,6 +39,7 @@ var SummerNoteComponent = Ember.Component.extend({
       toolbar: _toolbar,
       airMode: _airMode,
       dialogsInBody: _dialogsInBody,
+	  callbacks: _callbacks
       // airPopover: [
       //   ['color', ['color']],
       //   ['font', ['bold', 'underline', 'clear']],
