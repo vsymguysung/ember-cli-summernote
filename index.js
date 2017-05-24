@@ -7,6 +7,20 @@ module.exports = {
 
   name: 'ember-cli-summernote',
 
+  init: function() {
+
+  },
+
+  contentFor: function(type, config) {
+    // Const
+    let summernoteConfig = config['ember-cli-summernote'] || {};
+
+    let summernotePath = 'bower_components/summernote/dist/';
+    let summernoteLangFile = `lang/summernote-${summernoteConfig.lang}.js`;
+    let summernoteLangFilePath = `${summernotePath}${summernoteLangFile}`;
+    console.log(`summernoteLangFilePath:${summernoteLangFilePath}`);
+
+  },
 
   included: function(app) {
     this._super.included(app);
@@ -42,4 +56,5 @@ module.exports = {
     app.import(path.join(summernotePath, '/summernote.min.js'));
 
   }
+
 };

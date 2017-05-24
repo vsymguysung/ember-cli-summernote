@@ -24,6 +24,7 @@ var SummerNoteComponent = Ember.Component.extend({
     var _focus = this.get('focus');
     var _airMode = this.get('airMode');
     var _dialogsInBody = this.get('dialogsInBody');
+    var _lang = this.get('lang'); // lang: 'ko-KR' // default: 'en-US'
     var _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
 
     // ensure summernote is loaded
@@ -36,6 +37,7 @@ var SummerNoteComponent = Ember.Component.extend({
     this.$('#summernote').summernote({
       height: _height,
       focus: _focus,
+      lang: _lang,
       toolbar: _toolbar,
       airMode: _airMode,
       dialogsInBody: _dialogsInBody,

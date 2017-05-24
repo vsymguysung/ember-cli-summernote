@@ -20,7 +20,8 @@ module.exports = function(environment) {
     'ember-cli-summernote': {
       "importBootstrapCSS": true,
       "importBootstrapJS": true,
-      "importFontawesomeCSS": true
+      "importFontawesomeCSS": true,
+      "lang": "ko-KR"
     }
   };
 
