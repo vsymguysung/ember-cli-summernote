@@ -66,7 +66,7 @@ You can clone this repo and run the app
 $ sudo npm install -g ember-cli
 
 # clone the codebase
-$ git clone https://github.com/hxbkx/ember-cli-summernote.git
+$ git clone http://github.com/vsymguysung/ember-cli-summernote.git
 $ cd ember-cli-summernote
 
 # install dependencies
