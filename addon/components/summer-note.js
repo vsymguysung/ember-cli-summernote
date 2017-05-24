@@ -15,7 +15,6 @@ var SummerNoteComponent = Ember.Component.extend({
   callbacks:{},
   willDestroyElement: function() {
     this.$('#summernote').summernote('destroy');
-    console.log('summernote("destroy")');
   },
 
   didInsertElement: function() {
