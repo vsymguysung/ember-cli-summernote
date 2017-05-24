@@ -1,9 +1,6 @@
 {
   "name": "ember-cli-summernote",
   "dependencies": {
-    "ember": "~2.4.1",
-    "ember-cli-test-loader": "0.2.2",
-    "ember-qunit-notifications": "0.1.0",
     "font-awesome": "4.7.0",
     "summernote": "0.8.3"
   }
