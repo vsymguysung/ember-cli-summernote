@@ -1,8 +1,13 @@
 import Ember from "ember";
 
+const {
+  get,
+  assert,
+  Logger,
+  Component
+} = Ember
 
-
-var SummerNoteComponent = Ember.Component.extend({
+var SummerNoteComponent = Component.extend({
 
   classNames: ['wysiwyg-editor'],
   btnSize: 'btn-xs',
@@ -13,26 +18,39 @@ var SummerNoteComponent = Ember.Component.extend({
   dialogsInBody: false,
   disabledOptions: {},
   callbacks:{},
+
+
+  config: Ember.computed(function() {
+    let applicationConfig = this.container.lookupFactory('config:environment');
+    Logger.debug(`applicationConfig.ember-cli-summernote: ${JSON.stringify(applicationConfig)}`);
+
+    return applicationConfig;
+  }),
+
   willDestroyElement: function() {
     this.$('#summernote').summernote('destroy');
-    console.log('summernote("destroy")');
+    Logger.debug('summernote("destroy")');
   },
 
+
+
   didInsertElement: function() {
+
     var _btnSize = this.get('btnSize');
     var _height = this.get('height');
     var _focus = this.get('focus');
     var _airMode = this.get('airMode');
     var _dialogsInBody = this.get('dialogsInBody');
-    var _lang = this.get('lang'); // lang: 'ko-KR' // default: 'en-US'
+    var _lang = get(this, 'config')['ember-cli-summernote'].lang;
     var _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
-	var _callbacks = this.get('callbacks');
+    var _callbacks = this.get('callbacks');
+
+    Logger.debug(`_lang:${JSON.stringify(_lang)}`);
     // ensure summernote is loaded
     // summernote 0.6.0 is not working as of this code written.
     // 0.5.10 is working version.
-
-    Ember.assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
-    Ember.assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
+    assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
+    assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
 
     this.$('#summernote').summernote({
       height: _height,
@@ -41,14 +59,7 @@ var SummerNoteComponent = Ember.Component.extend({
       toolbar: _toolbar,
       airMode: _airMode,
       dialogsInBody: _dialogsInBody,
-	  callbacks: _callbacks
-      // airPopover: [
-      //   ['color', ['color']],
-      //   ['font', ['bold', 'underline', 'clear']],
-      //   ['para', ['ul', 'paragraph']],
-      //   ['table', ['table']],
-      //   ['insert', ['link', 'picture']]
-      // ]
+      callbacks: _callbacks,
     });
 
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));

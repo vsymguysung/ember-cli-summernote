@@ -29,7 +29,7 @@ export default Ember.ObjectController.extend({
   contentHeight: 200,
   postContent: "Some intial contents go here. Lorem Ipsum is simply dummy text of the printing.",
   editingDisabled: false,
-  
+
   actions: {
     changeHeight(someObject) {
       var height = someObject.doSomeCalculationToGetHeight();
@@ -40,27 +40,39 @@ export default Ember.ObjectController.extend({
 ```
 
 ```handlebars
-{{summer-note height=contentHeight btnSize=bs-sm content=postContent airMode=false focus=false header="Example" disabled=editingDisabled disabledOptions=disabledOptions}}
+{{summer-note height=contentHeight
+              btnSize=bs-sm
+              content=postContent
+              airMode=false
+              focus=false
+              header="Example"
+              disabled=editingDisabled
+              disabledOptions=disabledOptions
+              callbacks=callbackOptions}}
 ```
 
-### ember-cli-build.js ###
-The bootstrap and fontAwesome resources will not be imported to your resources by default. 
+### config/environment.js ###
+The bootstrap and fontAwesome resources will not be imported to your resources by default.
 
-If you want the add-on to add it selectively you have to specify it in the `Brocfile.js`
-(No option means false by default)
+Also you can set `lang` option for the editor.
 
 ```
-var app = new EmberAddon({
+var ENV = {
+  modulePrefix: 'dummy',
+  environment: environment,
+  ...
   'ember-cli-summernote': {
     "importBootstrapCSS": true,
     "importBootstrapJS": true,
-    "importFontawesomeCSS": true
+    "importFontawesomeCSS": true,
+    "lang": "ko-KR" // "ru-RU" //"lang": "en-US"
   }
-});
+}
+
 ```
 
 ## Demo
-You can clone this repo and run the app 
+You can clone this repo and run the app
 
 ```
 $ sudo npm install -g ember-cli
