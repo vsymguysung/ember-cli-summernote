@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 var path = require('path');
@@ -27,7 +27,7 @@ module.exports = {
 
     var summernotePath   = path.join(app.bowerDirectory,'/summernote/dist/');
     var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
-    var fontawesomePath   = path.join(app.bowerDirectory,'/fontawesome/');
+    var fontawesomePath   = path.join(app.bowerDirectory,'/font-awesome/');
     var options         = app.options['ember-cli-summernote'] || {};
 
 
@@ -52,8 +52,11 @@ module.exports = {
     }
 
     // Include Summernote.
-    app.import(path.join(summernotePath, '/summernote.css'));
-    app.import(path.join(summernotePath, '/summernote.min.js'));
+    app.import(path.join(summernotePath, 'summernote.css'));
+    app.import(path.join(summernotePath, 'summernote.min.js'));
+    app.import(path.join(summernotePath, 'font/summernote.eot'), { destDir: 'assets/font' });
+    app.import(path.join(summernotePath, 'font/summernote.ttf'), { destDir: 'assets/font' });
+    app.import(path.join(summernotePath, 'font/summernote.woff'), { destDir: 'assets/font' });
 
   }
 
