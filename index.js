@@ -20,7 +20,6 @@ module.exports = {
 
     var projectConfig = this.project.config(app.env); // This projectConfig is from the consuming app's environment.js
     var config = projectConfig['ember-cli-summernote'] || { importBootstrapCSS: false, importBootstrapJS: false, importFontawesomeCSS: false, lang: 'en-US' };
-    const config = projectConfig['ember-cli-notifications'] || { includeFontAwesome: false };
     // console.log(`index.js: config: ${JSON.stringify(config)}`);
 
     // Import Bootstrap
