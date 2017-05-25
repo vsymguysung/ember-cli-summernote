@@ -7,12 +7,6 @@ module.exports = {
 
   name: 'ember-cli-summernote',
 
-  init: function() {
-  },
-
-  contentFor: function(type, config) {
-  },
-
   included: function(app) {
     this._super.included(app);
 
@@ -20,12 +14,14 @@ module.exports = {
     var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
     var fontawesomePath   = path.join(app.bowerDirectory,'/font-awesome/');
 
+    // DBG.
     var options         = app.options['ember-cli-summernote'] || {};  // This options are from the ember-cli-build.js
-    console.log(`index.js: options: ${JSON.stringify(app.options['ember-cli-summernote'])}`);
+    // console.log(`index.js: options: ${JSON.stringify(app.options['ember-cli-summernote'])}`);
 
     var projectConfig = this.project.config(app.env); // This projectConfig is from the consuming app's environment.js
-    var config = projectConfig['ember-cli-summernote'];
-    console.log(`index.js: config: ${JSON.stringify(config)}`);
+    var config = projectConfig['ember-cli-summernote'] || { importBootstrapCSS: false, importBootstrapJS: false, importFontawesomeCSS: false, lang: 'en-US' };
+    const config = projectConfig['ember-cli-notifications'] || { includeFontAwesome: false };
+    // console.log(`index.js: config: ${JSON.stringify(config)}`);
 
     // Import Bootstrap
     if (config.importBootstrapCSS) {
