@@ -137,9 +137,6 @@ $ ember serve
 # visit the page with the following url.
 http://localhost:4200
 ```
-## ToDOs / Known Issues
-* Need to implement airPopover customizing feature in the component. 
-
 
 
 #### Inspired by
