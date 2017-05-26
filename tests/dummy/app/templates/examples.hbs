@@ -5,13 +5,17 @@
                   height=contentHeight
                   btnSize=bs-sm
                   airMode=false
-                  content=postContent
                   focus=false
                   header="Example"
-                  callbacks=callbackOptions
+                  content=(readonly postContent)
+                  onContentChange=(action 'onContentChange')
                   disabled=myControlVariable
+                  callbacks=callbackOptions
                   disabledOptions=disabledOptions&#125;&#125;
 
+    </pre>
+
+    <pre>
     disabledOptions: {
       style: false,
       insert: {
@@ -19,7 +23,12 @@
       },
       help: false
     }
+    </pre>
 
+    All callbacks except <b>onChange</b> are supported.
+    The <b>onChange</b> callback are used internally for the <b>onContentChange</b> action.
+
+    <pre>
     callbackOptions: {
       onInit: function() {
         console.log('Summernote is launched');
@@ -31,18 +40,20 @@
         console.log('Called event paste');
       },
     },
+
     </pre>
 
     <div class='container'>
       <h3>Example </h3>
       {{summer-note height=contentHeight
                     btnSize=bs-sm
-                    content=postContent
                     airMode=false
                     focus=false
                     header="Example"
-                    callbacks=callbackOptions
+                    content=(readonly postContent)
+                    onContentChange=(action 'onContentChange')
                     disabled=editingDisabled
+                    callbacks=callbackOptions
                     disabledOptions=disabledOptions}}
 
       <p>Disable editing {{input type="checkbox" checked=editingDisabled}}</p>
@@ -54,4 +65,7 @@
         </pre>
       </div>
     </div>
+    <button {{action 'rerenderCheck' 'The editor is rerendered...'}}>
+        Check rerender with new content
+    </button>
   </div>

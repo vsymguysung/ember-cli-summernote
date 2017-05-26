@@ -22,6 +22,11 @@ $ ember g ember-cli-summernote
 ## Basic Usage
 
 ### Handlebar Template
+
+As of version `1.1.0`, the addon embraces `DDAU`.
+The `content` property is readonly and `onContentChange` action is used for updated contents.
+
+
 ```javascript
 import Ember from 'ember';
 
@@ -31,24 +36,62 @@ export default Ember.ObjectController.extend({
   editingDisabled: false,
 
   actions: {
+    onContentChange(text) {
+      set(this, 'postContent', text);
+    },
+    
     changeHeight(someObject) {
-      var height = someObject.doSomeCalculationToGetHeight();
-       this.set('contentHeight', height)
+      let height = someObject.doSomeCalculationToGetHeight();
+      this.set('contentHeight', height)
     }
   }
 });
 ```
 
+
+As a result to follow `DDAU`, the summernote internall callback `onChange` will not be supported through the `callbacks` property in a consumming application.
+
+
 ```handlebars
+
 {{summer-note height=contentHeight
               btnSize=bs-sm
-              content=postContent
               airMode=false
               focus=false
               header="Example"
+              content=(readonly postContent)
+              onContentChange=(action 'onContentChange')
               disabled=editingDisabled
-              disabledOptions=disabledOptions
-              callbacks=callbackOptions}}
+              callbacks=callbackOptions
+              disabledOptions=disabledOptions}}
+```
+
+```javascript
+
+    disabledOptions: {
+      style: false,
+      insert: {
+        picture: false
+      },
+      help: false
+    }
+```
+
+All callbacks except `onChange` are supported.
+The `onChange` callback are used internally for the `onContentChange` action.
+
+```javascript
+    callbackOptions: {
+      onInit: function() {
+        console.log('Summernote is launched');
+      },
+      onEnter: function() {
+        console.log('Enter/Return key pressed');
+      },
+      onPaste: function(e) {
+        console.log('Called event paste');
+      },
+    },
 ```
 
 ### config/environment.js ###
@@ -65,7 +108,7 @@ var ENV = {
     "importBootstrapCSS": true,
     "importBootstrapJS": true,
     "importFontawesomeCSS": true,
-    "lang": "ko-KR" // "ru-RU" //"lang": "en-US"
+    "lang": "en-US // "ru-RU" //"lang": "en-US"
   }
 }
 

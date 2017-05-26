@@ -4,10 +4,12 @@ const {
   get,
   assert,
   Logger,
+  isEqual,
+  isEmpty,
   Component
 } = Ember
 
-var SummerNoteComponent = Component.extend({
+let SummerNoteComponent = Component.extend({
 
   classNames: ['wysiwyg-editor'],
   btnSize: 'btn-xs',
@@ -17,38 +19,41 @@ var SummerNoteComponent = Component.extend({
   disabled: false,
   dialogsInBody: false,
   disabledOptions: {},
-  callbacks:{},
-
+  callbacks: {},
 
   config: Ember.computed(function() {
     let applicationConfig = this.container.lookupFactory('config:environment');
-    Logger.debug(`applicationConfig.ember-cli-summernote: ${JSON.stringify(applicationConfig)}`);
+    // Logger.debug(`applicationConfig.ember-cli-summernote: ${JSON.stringify(applicationConfig)}`);
 
     return applicationConfig;
   }),
 
-  willDestroyElement: function() {
-    this.$('#summernote').summernote('destroy');
-    Logger.debug('summernote("destroy")');
+  onChange(text) {
+    Logger.debug(`onChange callback. text: ${text}`);
+    let _onContentChange = this.get('onContentChange');
+    if (!isEmpty(_onContentChange)) {
+      _onContentChange(text);
+    }
   },
 
-
+  willDestroyElement: function() {
+    this.$('#summernote').summernote('destroy');
+    // Logger.debug('summernote("destroy")');
+  },
 
   didInsertElement: function() {
+    let _btnSize = this.get('btnSize');
+    let _height = this.get('height');
+    let _focus = this.get('focus');
+    let _airMode = this.get('airMode');
+    let _dialogsInBody = this.get('dialogsInBody');
+    let _lang = get(this, 'config')['ember-cli-summernote'].lang;
+    let _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
+    let _callbacks= this.get('callbacks');
+    _callbacks.onChange = this.get('onChange').bind(this);
 
-    var _btnSize = this.get('btnSize');
-    var _height = this.get('height');
-    var _focus = this.get('focus');
-    var _airMode = this.get('airMode');
-    var _dialogsInBody = this.get('dialogsInBody');
-    var _lang = get(this, 'config')['ember-cli-summernote'].lang;
-    var _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
-    var _callbacks = this.get('callbacks');
-
-    Logger.debug(`_lang:${JSON.stringify(_lang)}`);
-    // ensure summernote is loaded
-    // summernote 0.6.0 is not working as of this code written.
-    // 0.5.10 is working version.
+    //
+    // Ensure summernote is loaded
     assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
     assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
 
@@ -65,21 +70,17 @@ var SummerNoteComponent = Component.extend({
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
     this.$('.btn').addClass(_btnSize);
 
-    var _content = this.get('content');
+    let _content = this.get('content');
     this.$('#summernote').summernote('code', _content);
   },
 
-  keyUp: function() {
-    this.doUpdate();
-  },
+  didUpdate() {
+    let _editorText = this.$('#summernote').summernote('code');
+    let _newText = get(this, 'content');
 
-  click: function() {
-    this.doUpdate();
-  },
-
-  doUpdate: function() {
-    var content = this.$('#summernote').summernote('code');
-    this.set('content', content);
+    if (!isEqual(_editorText, _newText)) {
+      this.$('#summernote').summernote('code', _newText);
+    }
   },
 
   setHeight: Ember.observer('height', function(/*sender, key, value, rev*/) {
@@ -91,7 +92,7 @@ var SummerNoteComponent = Component.extend({
   }),
 
   getToolbarOptions: function(disabledOptions) {
-    var availableOptions = {
+    let availableOptions = {
       style: {
         style: true
       },
@@ -138,14 +139,14 @@ var SummerNoteComponent = Component.extend({
         help: true
       }
     };
-    var _toolbar = [];
+    let _toolbar = [];
 
     //disable Options
-    for (var key in availableOptions) {
-      var arr = [];
+    for (let key in availableOptions) {
+      let arr = [];
       if(disabledOptions === undefined || disabledOptions === null ||disabledOptions[key] !== false) {
         arr.push(key);
-        var arr2 = [];
+        let arr2 = [];
         for (var subKey in availableOptions[key]) {
           if(disabledOptions === undefined || disabledOptions === null || disabledOptions[key] === undefined || disabledOptions[key] === null || disabledOptions[key][subKey] !== false) {
             arr2.push(subKey);

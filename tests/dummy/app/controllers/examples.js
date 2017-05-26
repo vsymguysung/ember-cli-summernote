@@ -1,6 +1,7 @@
 import Ember from "ember";
 
 const {
+  set,
   Logger,
 } = Ember
 
@@ -18,7 +19,7 @@ var ExamplesController = Ember.Controller.extend({
     insert: {
       picture: false
     },
-    help: false
+    help: true
   },
 
   callbackOptions: {
@@ -29,12 +30,20 @@ var ExamplesController = Ember.Controller.extend({
       Logger.debug('Enter/Return key pressed');
     },
     onPaste: function(e) {
-      Logger.debug(`Called event paste e: ${e}`);
+      Logger.debug(`Called event paste e: ${JSON.stringify(e)}`);
     },
   },
 
   actions: {
+    onContentChange(text) {
+      Logger.debug(`onContentChange action... text:${text}`);
+      set(this, 'postContent', text);
+    },
 
+    rerenderCheck(text) {
+      Logger.debug(`rerenderCheck action... text:${text}`);
+      set(this, 'postContent', text);
+    }
   }
 
 });
