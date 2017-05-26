@@ -42,7 +42,7 @@ export default Ember.ObjectController.extend({
 
     changeHeight(someObject) {
       let height = someObject.doSomeCalculationToGetHeight();
-      this.set('contentHeight', height)
+      set(this, 'contentHeight', height)
     }
   }
 });
