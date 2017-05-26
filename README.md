@@ -39,7 +39,7 @@ export default Ember.ObjectController.extend({
     onContentChange(text) {
       set(this, 'postContent', text);
     },
-    
+
     changeHeight(someObject) {
       let height = someObject.doSomeCalculationToGetHeight();
       this.set('contentHeight', height)
@@ -63,12 +63,14 @@ As a result to follow `DDAU`, the summernote internall callback `onChange` will 
               onContentChange=(action 'onContentChange')
               disabled=editingDisabled
               callbacks=callbackOptions
-              disabledOptions=disabledOptions}}
+              toolbarOptions=toolbarOptions}}
 ```
+
+Example of configuring the toolbar options.
 
 ```javascript
 
-    disabledOptions: {
+    toolbarOptions: {
       style: false,
       insert: {
         picture: false
@@ -77,7 +79,9 @@ As a result to follow `DDAU`, the summernote internall callback `onChange` will 
     }
 ```
 
+
 All callbacks except `onChange` are supported.
+
 The `onChange` callback are used internally for the `onContentChange` action.
 
 ```javascript

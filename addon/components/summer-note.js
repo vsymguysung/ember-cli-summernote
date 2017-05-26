@@ -4,6 +4,7 @@ const {
   get,
   assert,
   Logger,
+  getOwner,
   isEqual,
   isEmpty,
   Component
@@ -18,11 +19,12 @@ let SummerNoteComponent = Component.extend({
   airMode: false,
   disabled: false,
   dialogsInBody: false,
-  disabledOptions: {},
+  toolbarOptions: {},
   callbacks: {},
 
   config: Ember.computed(function() {
-    let applicationConfig = this.container.lookupFactory('config:environment');
+    //let applicationConfig = this.container.lookupFactory('config:environment');
+    let applicationConfig = getOwner(this).resolveRegistration('config:environment');
     // Logger.debug(`applicationConfig.ember-cli-summernote: ${JSON.stringify(applicationConfig)}`);
 
     return applicationConfig;
@@ -42,14 +44,14 @@ let SummerNoteComponent = Component.extend({
   },
 
   didInsertElement: function() {
-    let _btnSize = this.get('btnSize');
-    let _height = this.get('height');
-    let _focus = this.get('focus');
-    let _airMode = this.get('airMode');
-    let _dialogsInBody = this.get('dialogsInBody');
-    let _lang = get(this, 'config')['ember-cli-summernote'].lang;
-    let _toolbar = this.getToolbarOptions(this.get('disabledOptions'));
-    let _callbacks= this.get('callbacks');
+    let _btnSize        = get(this, 'btnSize');
+    let _height         = get(this, 'height');
+    let _focus          = get(this, 'focus');
+    let _airMode        = get(this, 'airMode');
+    let _dialogsInBody  = get(this, 'dialogsInBody');
+    let _lang           = get(this, 'config')['ember-cli-summernote'].lang;
+    let _toolbar        = this.getToolbarOptions(this.get('toolbarOptions'));
+    let _callbacks      = get(this, 'callbacks');
     _callbacks.onChange = this.get('onChange').bind(this);
 
     //
@@ -91,7 +93,7 @@ let SummerNoteComponent = Component.extend({
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
   }),
 
-  getToolbarOptions: function(disabledOptions) {
+  getToolbarOptions: function(toolbarOptions) {
     let availableOptions = {
       style: {
         style: true
@@ -144,11 +146,11 @@ let SummerNoteComponent = Component.extend({
     //disable Options
     for (let key in availableOptions) {
       let arr = [];
-      if(disabledOptions === undefined || disabledOptions === null ||disabledOptions[key] !== false) {
+      if(toolbarOptions === undefined || toolbarOptions === null ||toolbarOptions[key] !== false) {
         arr.push(key);
         let arr2 = [];
         for (var subKey in availableOptions[key]) {
-          if(disabledOptions === undefined || disabledOptions === null || disabledOptions[key] === undefined || disabledOptions[key] === null || disabledOptions[key][subKey] !== false) {
+          if(toolbarOptions === undefined || toolbarOptions === null || toolbarOptions[key] === undefined || toolbarOptions[key] === null || toolbarOptions[key][subKey] !== false) {
             arr2.push(subKey);
           }
         }

@@ -1,4 +1,10 @@
   <div class="container">
+
+    As of version <b>1.1.0</b>, the addon embraces <b>DDAU</b>.
+    The <b>content</b> property is readonly and <b>onContentChange</b> action is used for updated contents.
+
+    As a result to follow <b>DDAU</b>, the summernote internall callback <b>onChange</b> will not be supported through the <b>callbacks</b> property in a consumming application.
+
     <pre>
     Use the following code to put a wysiwyg editor.
     &#123;&#123;summer-note
@@ -11,17 +17,19 @@
                   onContentChange=(action 'onContentChange')
                   disabled=myControlVariable
                   callbacks=callbackOptions
-                  disabledOptions=disabledOptions&#125;&#125;
+                  toolbarOptions=toolbarOptions&#125;&#125;
 
     </pre>
 
+Example of configuring the toolbar options.
+
     <pre>
-    disabledOptions: {
+    toolbarOptions: {
       style: false,
       insert: {
         picture: false
       },
-      help: false
+      help: true
     }
     </pre>
 
@@ -54,7 +62,7 @@
                     onContentChange=(action 'onContentChange')
                     disabled=editingDisabled
                     callbacks=callbackOptions
-                    disabledOptions=disabledOptions}}
+                    toolbarOptions=toolbarOptions}}
 
       <p>Disable editing {{input type="checkbox" checked=editingDisabled}}</p>
     </div>

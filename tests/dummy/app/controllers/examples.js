@@ -14,7 +14,7 @@ var ExamplesController = Ember.Controller.extend({
 
   editingDisabled: false,
 
-  disabledOptions: {
+  toolbarOptions: {
     style: false,
     insert: {
       picture: false
