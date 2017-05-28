@@ -11,6 +11,9 @@
 Ember-cli-summernote is an Ember CLI add-on. This addon actually converts summernote to an Ember component which is
 a re-usable unit. This is still a work in progress. Pull requests are welcome.
 
+
+[DEMO](http://vsymguysung.github.io/ember-cli-summernote/)
+
 ## Installation
 ```
 # install via npm
