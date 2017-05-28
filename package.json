@@ -11,11 +11,12 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/vsymguysung/ember-cli-summernote",
+  "repository": "hjtps://github.com/vsymguysung/ember-cli-summernote",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:testall"
+    "test": "ember try:testall",
+    "deploy": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
   "dependencies": {
     "ember-cli-babel": "^6.0.0"
