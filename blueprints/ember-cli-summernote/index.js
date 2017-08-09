@@ -4,16 +4,6 @@ module.exports = {
   afterInstall: function() {
     var that = this;
 
-
-    return that.addBowerPackageToProject('summernote', "~0.7.0");
-    //
-    // return this.addBowerPackageToProject('rangy-1.3').then(function() {
-    //   return this.addBowerPackageToProject('wysihtml5x').then(function() {
-    //     return this.addBowerPackageToProject('bootstrap').then(function() {
-    //       return that.addBowerPackageToProject('bootstrap3-wysihtml5-bower');
-    //     });
-    //   });
-    // });
-
+    return that.addBowerPackageToProject('summernote', "0.8.3");
   }
 };
