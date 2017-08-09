@@ -120,6 +120,17 @@ var ENV = {
 
 ```
 
+##Test Helper
+
+This addon also provides a convenient test helper to interact with the editor
+in acceptance tests. 
+
+```js
+fillInSummernote('.summernote-container', '<p>Test Text Entered.</p>');
+
+getContentFromSummernote('.summernote-container');
+```
+
 ## Demo
 You can clone this repo and run the app
 
