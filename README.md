@@ -102,7 +102,7 @@ The `onChange` callback are used internally for the `onContentChange` action.
 ```
 
 ### config/environment.js ###
-The bootstrap and fontAwesome resources will not be imported to your resources by default.
+The bootstrap resources will not be imported to your resources by default.
 
 Also you can set `lang` option for the editor.
 
@@ -114,7 +114,6 @@ var ENV = {
   'ember-cli-summernote': {
     "importBootstrapCSS": true,
     "importBootstrapJS": true,
-    "importFontawesomeCSS": true,
     "lang": "en-US // "ru-RU" //"lang": "en-US"
   }
 }
