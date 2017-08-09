@@ -26,13 +26,15 @@ module.exports = {
       app.import(path.join(bootstrapPath, '/css/bootstrap.min.css'));
     }
 
-    if (config.importBootstrapJS) {
+    if (config.importBootstrapJS && !process.env.EMBER_CLI_FASTBOOT) {
       app.import(path.join(bootstrapPath, '/js/bootstrap.min.js'));
     }
 
     // Include Summernote.
     app.import(path.join(summernotePath, 'summernote.css'));
-    app.import(path.join(summernotePath, 'summernote.min.js'));
+    if (!process.env.EMBER_CLI_FASTBOOT) {
+      app.import(path.join(summernotePath, 'summernote.min.js'));
+    }
     app.import(path.join(summernotePath, 'font/summernote.eot'), { destDir: 'assets/font' });
     app.import(path.join(summernotePath, 'font/summernote.ttf'), { destDir: 'assets/font' });
     app.import(path.join(summernotePath, 'font/summernote.woff'), { destDir: 'assets/font' });
