@@ -106,7 +106,7 @@ The bootstrap resources will not be imported to your resources by default.
 
 Also you can set `lang` option for the editor.
 
-```
+```javascript
 var ENV = {
   modulePrefix: 'dummy',
   environment: environment,
@@ -120,7 +120,7 @@ var ENV = {
 
 ```
 
-##Test Helper
+## Test Helper
 
 This addon also provides a convenient test helper to interact with the editor
 in acceptance tests. 
