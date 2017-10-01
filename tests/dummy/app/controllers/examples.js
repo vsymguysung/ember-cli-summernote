@@ -10,6 +10,8 @@ var ExamplesController = Ember.Controller.extend({
 
   postContent: 'Hello, world!',
 
+  customButtons: [],
+
   contentHeight: 100,
 
   editingDisabled: false,
@@ -32,6 +34,29 @@ var ExamplesController = Ember.Controller.extend({
     onPaste: function(e) {
       Logger.debug(`Called event paste e: ${JSON.stringify(e)}`);
     },
+  },
+
+  init() {
+    let _onNewBlock = this.get('onNewBlock').bind(this);
+
+    let newBlockButton = function (context) {
+			var ui = $.summernote.ui;
+
+			var button = ui.button({
+											contents: '<i class="fa fa-file-text-o"/> New div',
+											tooltip: 'New div',
+											click: _onNewBlock
+			});
+
+			return button.render();
+    }
+
+    this.customButtons.push(newBlockButton);
+	},
+
+	onNewBlock() {
+    let blocks = '<div class="header" id="headerBlock"></div>';
+    this.set('postContent', this.get('postContent') + blocks);
   },
 
   actions: {
