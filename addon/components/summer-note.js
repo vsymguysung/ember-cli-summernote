@@ -54,6 +54,15 @@ let SummerNoteComponent = Component.extend({
     let _callbacks      = get(this, 'callbacks');
     _callbacks.onChange = this.get('onChange').bind(this);
 
+    let _customButtons = {};
+    let arrayOfCustomButtons = get(this, 'customButtons');
+    if (arrayOfCustomButtons) {
+      arrayOfCustomButtons.forEach(function (item, i, arr) {
+        _customButtons['myButton' + i] = item;
+        _toolbar.push(['myButton' + i, ['myButton' + i]]);
+      });
+    }
+
     //
     // Ensure summernote is loaded
     assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
@@ -67,6 +76,7 @@ let SummerNoteComponent = Component.extend({
       airMode: _airMode,
       dialogsInBody: _dialogsInBody,
       callbacks: _callbacks,
+      buttons: _customButtons
     });
 
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));

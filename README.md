@@ -82,6 +82,47 @@ Example of configuring the toolbar options.
     }
 ```
 
+### Custom buttons usage ###
+
+In hbs file
+```javascript
+    {{summer-note content=article customButtons=customButtons}}
+```
+
+In controller file
+```javascript
+    import Ember from 'ember';
+
+    export default Ember.Controller.extend({
+        article: 'some text',
+        customButtons: [],
+
+        init() {
+
+            let _onNewBlock = this.get('onNewBlock').bind(this);
+
+            let newBlockButton = function (context) {
+                var ui = $.summernote.ui;
+
+                var button = ui.button({
+                    contents: '<i class="fa fa-file-text-o"/> New div',
+                    tooltip: 'New div',
+                    click: _onNewBlock
+                });
+
+                return button.render();
+            }
+
+            this.customButtons.push(newBlockButton);
+
+        },
+
+        onNewBlock() {
+            let blocks = '<div class="header" id="headerBlock"></div>';
+            this.set('article', article + blocks);
+        }
+    });
+```
 
 All callbacks except `onChange` are supported.
 
