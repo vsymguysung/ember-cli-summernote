@@ -39,8 +39,8 @@ var ExamplesController = Ember.Controller.extend({
   init() {
     let _onNewBlock = this.get('onNewBlock').bind(this);
 
-    let newBlockButton = function (context) {
-			var ui = $.summernote.ui;
+    let newBlockButton = function (/*context*/) {
+			var ui = Ember.$.summernote.ui;
 
 			var button = ui.button({
 											contents: '<i class="fa fa-file-text-o"/> New div',

@@ -57,7 +57,7 @@ let SummerNoteComponent = Component.extend({
     let _customButtons = {};
     let arrayOfCustomButtons = get(this, 'customButtons');
     if (arrayOfCustomButtons) {
-      arrayOfCustomButtons.forEach(function (item, i, arr) {
+      arrayOfCustomButtons.forEach(function (item, i, /*arr*/) {
         _customButtons['myButton' + i] = item;
         _toolbar.push(['myButton' + i, ['myButton' + i]]);
       });
