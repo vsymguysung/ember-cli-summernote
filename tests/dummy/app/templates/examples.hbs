@@ -1,29 +1,30 @@
-  <div class="container">
+<div class="container-fluid">
 
-    As of version <b>1.1.0</b>, the addon embraces <b>DDAU</b>.
-    The <b>content</b> property is readonly and <b>onContentChange</b> action is used for updated contents.
+  As of version <b>1.1.0</b>, the addon embraces <b>DDAU</b>. The <b>content</b> property is readonly and <b>onContentChange</b> action is used for updated contents. As a result to follow <b>DDAU</b>, the summernote internall callback <b>onChange</b> will not be supported through the <b>callbacks</b> property in a consumming application.
 
-    As a result to follow <b>DDAU</b>, the summernote internall callback <b>onChange</b> will not be supported through the <b>callbacks</b> property in a consumming application.
-
+  <div class="highlight">
     <pre>
     Use the following code to put a wysiwyg editor.
+
     &#123;&#123;summer-note
-                  height=contentHeight
-                  btnSize=bs-sm
-                  airMode=false
-                  focus=false
-                  header="Example"
-                  content=(readonly postContent)
-                  onContentChange=(action 'onContentChange')
-                  disabled=myControlVariable
-                  callbacks=callbackOptions
-                  toolbarOptions=toolbarOptions
-                  customButtons=customButtons&#125;&#125;
-
+      focus=false
+      btnSize=bs-sm
+      airMode=false
+      header="Example"
+      height=contentHeight
+      disabled=editingDisabled
+      callbacks=callbackOptions
+      customButtons=customButtons
+      toolbarOptions=toolbarOptions
+      content=(readonly postContent)
+      onContentChange=(action 'onContentChange')
+    &#125;&#125;
     </pre>
+  </div>
 
-Example of configuring the toolbar options.
+  Example of configuring the toolbar options.
 
+  <div class="highlight">
     <pre>
     toolbarOptions: {
       style: false,
@@ -33,10 +34,11 @@ Example of configuring the toolbar options.
       help: true
     }
     </pre>
+  </div>
 
-    All callbacks except <b>onChange</b> are supported.
-    The <b>onChange</b> callback are used internally for the <b>onContentChange</b> action.
+  All callbacks except <b>onChange</b> are supported. The <b>onChange</b> callback are used internally for the <b>onContentChange</b> action.
 
+  <div class="highlight">
     <pre>
     callbackOptions: {
       onInit: function() {
@@ -49,33 +51,35 @@ Example of configuring the toolbar options.
         console.log('Called event paste');
       },
     },
-
     </pre>
+  </div>
 
-    <div class='container'>
-      <h3>Example </h3>
-      {{summer-note height=contentHeight
-                    btnSize=bs-sm
-                    airMode=false
-                    focus=false
-                    header="Example"
-                    content=(readonly postContent)
-                    onContentChange=(action 'onContentChange')
-                    disabled=editingDisabled
-                    callbacks=callbackOptions
-                    toolbarOptions=toolbarOptions
-										customButtons=customButtons}}
+  <div>
+    <h3>Example </h3>
+    {{summer-note
+      focus=false
+      btnSize=bs-sm
+      airMode=false
+      header="Example"
+      height=contentHeight
+      disabled=editingDisabled
+      callbacks=callbackOptions
+      customButtons=customButtons
+      toolbarOptions=toolbarOptions
+      content=(readonly postContent)
+      onContentChange=(action 'onContentChange')
+    }}
 
-      <p>Disable editing {{input type="checkbox" checked=editingDisabled}}</p>
-    </div>
-    <div class="container">
-      <div class='wysiwyg-preview'>
-        <pre>
-          {{{postContent}}}
-        </pre>
+    <p>Disable editing {{input type="checkbox" checked=editingDisabled}}</p>
+  </div>
+  <div>
+    <div class='wysiwyg-preview'>
+      <div class="highlight">
+        <pre>{{{postContent}}}</pre>
       </div>
     </div>
-    <button {{action 'rerenderCheck' 'The editor is rerendered...'}}>
+  </div>
+  <button {{action 'rerenderCheck' 'The editor is rerendered...'}}>
         Check rerender with new content
     </button>
-  </div>
+</div>

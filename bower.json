@@ -1,6 +1,0 @@
-{
-  "name": "ember-cli-summernote",
-  "dependencies": {
-    "summernote": "0.8.3"
-  }
-}
