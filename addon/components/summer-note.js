@@ -53,8 +53,11 @@ export default Component.extend({
     let _focus          = get(this, 'focus');
     let _airMode        = get(this, 'airMode');
     let _dialogsInBody  = get(this, 'dialogsInBody');
-    let _toolbar        = this.getToolbarOptions(this.get('toolbarOptions'));
-    let _callbacks      = get(this, 'callbacks');
+
+    let _toolbarOptions = Object.assign({}, get(this, 'toolbarOptions'));
+    let _toolbar        = this.getToolbarOptions(_toolbarOptions);
+
+    let _callbacks      = Object.assign({}, get(this, 'callbacks'));
     _callbacks.onChange = this.get('onChange').bind(this);
 
     let _customButtons = {};
