@@ -44,12 +44,13 @@ let SummerNoteComponent = Component.extend({
   },
 
   didInsertElement: function() {
+    let _config         = get(this, 'config')['ember-cli-summernote'];
+    let _lang           = config && config.lang;
     let _btnSize        = get(this, 'btnSize');
     let _height         = get(this, 'height');
     let _focus          = get(this, 'focus');
     let _airMode        = get(this, 'airMode');
     let _dialogsInBody  = get(this, 'dialogsInBody');
-    let _lang           = get(this, 'config')['ember-cli-summernote'].lang;
     let _toolbar        = this.getToolbarOptions(this.get('toolbarOptions'));
     let _callbacks      = get(this, 'callbacks');
     _callbacks.onChange = this.get('onChange').bind(this);
