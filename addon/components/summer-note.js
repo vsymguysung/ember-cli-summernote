@@ -1,4 +1,5 @@
-import Ember from "ember";
+import Ember from 'ember';
+import layout from '../templates/components/summer-note';
 
 const {
   get,
@@ -10,7 +11,8 @@ const {
   Component
 } = Ember
 
-let SummerNoteComponent = Component.extend({
+export default Component.extend({
+  layout,
 
   classNames: ['wysiwyg-editor'],
   btnSize: 'btn-xs',
@@ -39,19 +41,23 @@ let SummerNoteComponent = Component.extend({
   },
 
   willDestroyElement: function() {
-    this.$('#summernote').summernote('destroy');
-    // Logger.debug('summernote("destroy")');
+    this.$('.summernote').summernote('destroy');
+    // Logger.debug('summernote('destroy')');
   },
 
   didInsertElement: function() {
+    let _config         = get(this, 'config')['ember-cli-summernote'];
+    let _lang           = _config && _config.lang;
     let _btnSize        = get(this, 'btnSize');
     let _height         = get(this, 'height');
     let _focus          = get(this, 'focus');
     let _airMode        = get(this, 'airMode');
     let _dialogsInBody  = get(this, 'dialogsInBody');
-    let _lang           = get(this, 'config')['ember-cli-summernote'].lang;
-    let _toolbar        = this.getToolbarOptions(this.get('toolbarOptions'));
-    let _callbacks      = get(this, 'callbacks');
+
+    let _toolbarOptions = Object.assign({}, get(this, 'toolbarOptions'));
+    let _toolbar        = this.getToolbarOptions(_toolbarOptions);
+
+    let _callbacks      = Object.assign({}, get(this, 'callbacks'));
     _callbacks.onChange = this.get('onChange').bind(this);
 
     let _customButtons = {};
@@ -65,10 +71,10 @@ let SummerNoteComponent = Component.extend({
 
     //
     // Ensure summernote is loaded
-    assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
-    assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
+    assert('summernote has to exist on Ember.$.fn.summernote', typeof Ember.$.fn.summernote === 'function' );
+    assert('tooltip has to exist on Ember.$.fn.tooltip', typeof Ember.$.fn.tooltip === 'function' );
 
-    this.$('#summernote').summernote({
+    this.$('.summernote').summernote({
       height: _height,
       focus: _focus,
       lang: _lang,
@@ -83,15 +89,15 @@ let SummerNoteComponent = Component.extend({
     this.$('.btn').addClass(_btnSize);
 
     let _content = this.get('content');
-    this.$('#summernote').summernote('code', _content);
+    this.$('.summernote').summernote('code', _content);
   },
 
   didUpdate() {
-    let _editorText = this.$('#summernote').summernote('code');
+    let _editorText = this.$('.summernote').summernote('code');
     let _newText = get(this, 'content');
 
     if (!isEqual(_editorText, _newText)) {
-      this.$('#summernote').summernote('code', _newText);
+      this.$('.summernote').summernote('code', _newText);
     }
   },
 
@@ -174,5 +180,3 @@ let SummerNoteComponent = Component.extend({
     return _toolbar;
   }
 });
-
-export default SummerNoteComponent;
