@@ -4,6 +4,6 @@ module.exports = {
   afterInstall: function() {
     var that = this;
 
-    return that.addBowerPackageToProject('summernote', "0.8.3");
+    return that.addAddonToProject('summernote', "~0.8.3");
   }
 };
