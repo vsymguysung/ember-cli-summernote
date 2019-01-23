@@ -4,7 +4,6 @@ import layout from '../templates/components/summer-note';
 const {
   get,
   assert,
-  Logger,
   getOwner,
   isEqual,
   isEmpty,
@@ -25,15 +24,12 @@ export default Component.extend({
   callbacks: {},
 
   config: Ember.computed(function() {
-    //let applicationConfig = this.container.lookupFactory('config:environment');
     let applicationConfig = getOwner(this).resolveRegistration('config:environment');
-    // Logger.debug(`applicationConfig.ember-cli-summernote: ${JSON.stringify(applicationConfig)}`);
 
     return applicationConfig;
   }),
 
   onChange(text) {
-    Logger.debug(`onChange callback. text: ${text}`);
     let _onContentChange = this.get('onContentChange');
     if (!isEmpty(_onContentChange)) {
       _onContentChange(text);
@@ -42,7 +38,6 @@ export default Component.extend({
 
   willDestroyElement: function() {
     this.$('.summernote').summernote('destroy');
-    // Logger.debug('summernote('destroy')');
   },
 
   didInsertElement: function() {
